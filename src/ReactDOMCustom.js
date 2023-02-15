@@ -1,4 +1,5 @@
 import ReactReconciler from 'react-reconciler';
+import {createElement, createTextNode, appendChild} from './Utils';
 
 
 let reconciler = ReactReconciler({
@@ -20,7 +21,7 @@ let reconciler = ReactReconciler({
         currentHostContext,
         workInProgress
     ) {
-        return document.createTextNode(text)
+        return createTextNode(text);
     },
     createInstance: function (
         type,
@@ -29,15 +30,10 @@ let reconciler = ReactReconciler({
         currentHostContext,
         workInProgress
     ) {
-        const element = document.createElement(type)
-        element.className = props.className || '';
-        element.style = props.style;
-        if(props.src) element.src = props.src;
-        if(props.href) element.href=props.href;
-        return element
+        return createElement(type, props);
     },
     appendInitialChild: (parent, child) => {
-        parent.appendChild(child)
+        appendChild(parent, child);
     },
     finalizeInitialChildren: (
         instance,
@@ -57,7 +53,7 @@ let reconciler = ReactReconciler({
         parent.appendChild(child)
     },
     clearContainer: function () { },
-    supportsMutation: true,
+    supportsMutation: true
 
 });
 
