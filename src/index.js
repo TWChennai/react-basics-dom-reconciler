@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactDOMCustom from './ReactDOMCustom';
+import MiniDomRenderer from './MiniDomRenderer';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-ReactDOMCustom.render(<App />,document.getElementById('root'));
+MiniDomRenderer.render(<App />,document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

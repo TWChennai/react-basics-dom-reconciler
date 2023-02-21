@@ -6,6 +6,7 @@ let createElement = function (type, props) {
     element.style = props.style;
     if(props.src) element.src = props.src;
     if(props.href) element.href=props.href;
+    if(props.onClick) element.addEventListener('click', props.onClick);
     return element;
 }
 
