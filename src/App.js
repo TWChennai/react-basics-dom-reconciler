@@ -1,9 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import Counter from './Counter';
+/** @jsx MiniReact.createElement */
 
-function App(){
-  return <Counter incrementBy={2}></Counter>;
+import MiniReact from "./MiniReact";
+import Counter from "./Counter";
+import ClassCounter from "./ClassCounter";
+
+function App() {
+  return (
+    <div>
+      <Counter incrementBy={1}></Counter>
+      <ClassCounter incrementBy={1}></ClassCounter>
+    </div>
+  );
 }
 
 export default App;
