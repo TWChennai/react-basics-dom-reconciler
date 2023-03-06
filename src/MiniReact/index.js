@@ -1,18 +1,22 @@
-import { render } from "./reconciler";
-import { createElement } from "./element";
-import { Component } from "./component";
-import { Hooks } from "./hooks";
-
-export { createElement, render };
+/**
+ * @param {string} type - the node type
+ * @param {?object} configObject - the props
+ * @param  {...any} args - the children array
+ * @returns {object} - to be called by tevreact.render
+ */
+export function createElement(type, configObject, ...args) {
+  console.log({
+    type,
+    configObject,
+    args,
+  });
+  // TODO: to be implemented
+  return {};
+}
 
 const Index = (function () {
-  const hooks = Hooks();
-
   return {
-    render: render,
     createElement: createElement,
-    Component: Component,
-    useState: hooks.useState,
   };
 })();
 
