@@ -1,5 +1,5 @@
 /** @jsx MiniReact.createElement */
 
-import MiniReact from "./MiniReact";
+import MiniReact, { render } from "./MiniReact";
 
-const element = <div id="my-div">Test</div>;
+render(<div id="my-div">Test</div>, document.getElementById("root"));
