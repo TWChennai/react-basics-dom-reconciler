@@ -1,3 +1,5 @@
+export const TEXT_ELEMENT = "TEXT";
+
 /**
  * @param {string} type - the node type
  * @param {?object} configObject - the props
@@ -5,6 +7,11 @@
  * @returns {object} - to be called by tevreact.render
  */
 export function createElement(type, configObject, ...args) {
-  // TODO: to be implemented
-  return { type };
+  const props = {};
+
+  const hasChildren = args.length > 0;
+  const nodeChildren = hasChildren ? [...args] : [];
+  props.children = nodeChildren;
+
+  return { type, props };
 }
