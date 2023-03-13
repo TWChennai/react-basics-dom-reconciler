@@ -7,7 +7,9 @@ export const TEXT_ELEMENT = "TEXT";
  * @returns {object} - to be called by tevreact.render
  */
 export function createElement(type, configObject, ...args) {
-  const props = {};
+  const props = {
+    ...configObject,
+  };
 
   const hasChildren = args.length > 0;
   const nodeChildren = hasChildren ? [...args] : [];

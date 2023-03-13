@@ -28,4 +28,26 @@ describe("MiniReact", () => {
     expect(divElement.textContent).toBe("");
     expect(divElement.children.length).toBe(0);
   });
+
+  it("should render a div with properties", () => {
+    const rootElement = document.createElement("section");
+    render(<div id="my-div" title="My div element"></div>, rootElement);
+
+    const divElement = rootElement.querySelector("div");
+
+    expect(divElement.getAttributeNames().length).toBe(2);
+    expect(divElement.getAttribute("id")).toBe("my-div");
+    expect(divElement.getAttribute("title")).toBe("My div element");
+  });
+
+  it("should render a div with properties that are event listeners", () => {
+    const rootElement = document.createElement("section");
+    const mockEventListener = jest.fn();
+    render(<div onClick={mockEventListener}></div>, rootElement);
+
+    const divElement = rootElement.querySelector("div");
+    divElement.click();
+
+    expect(mockEventListener).toHaveBeenCalled();
+  });
 });
