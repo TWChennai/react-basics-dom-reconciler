@@ -6,6 +6,7 @@ export const TEXT_ELEMENT = "TEXT";
  * @param  {...any} args - the children array
  * @returns {object} - to be called by tevreact.render
  */
+// eslint-disable-next-line no-unused-vars
 export function createElement(type, configObject, ...args) {
   const props = {};
 

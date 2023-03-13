@@ -9,8 +9,8 @@
     "dev": "webpack serve",
     "build": "webpack --mode production",
     "serve": "serve -s dist",
-    "test": "jest",
-    "lint": "eslint src/*.js --fix"
+    "test": "jest --coverage",
+    "lint": "eslint src/**"
   },
   "dependencies": {},
   "devDependencies": {
