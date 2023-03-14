@@ -14,7 +14,17 @@ export function createElement(type, configObject, ...args) {
 
   const hasChildren = args.length > 0;
   const nodeChildren = hasChildren ? [...args] : [];
-  props.children = nodeChildren;
+  props.children = nodeChildren.map((child) =>
+    child instanceof Object ? child : createTextElement(child)
+  );
 
   return { type, props };
+}
+
+/**
+ * @param {string} nodeValue - the text of the node
+ * @returns {object} - a call to createElement
+ */
+function createTextElement(nodeValue) {
+  return createElement(TEXT_ELEMENT, { nodeValue, children: [] });
 }

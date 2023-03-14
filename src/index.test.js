@@ -50,4 +50,31 @@ describe("MiniReact", () => {
 
     expect(mockEventListener).toHaveBeenCalled();
   });
+
+  it("should render nested children elements", () => {
+    const rootElement = document.createElement("section");
+    render(
+      <div>
+        Hello, World!
+        <p>
+          This is a <b>paragraph.</b>
+        </p>
+      </div>,
+      rootElement
+    );
+
+    const divElement = rootElement.querySelector("div");
+    const children = divElement.childNodes;
+
+    expect(children.length).toBe(2);
+
+    expect(children.item(0).textContent).toEqual("Hello, World!");
+
+    const paragraphElement = divElement.querySelector("p");
+    expect(paragraphElement.textContent).toEqual("This is a paragraph.");
+
+    const boldElement = paragraphElement.querySelector("b");
+    expect(boldElement).toBeTruthy();
+    expect(boldElement.textContent).toEqual("paragraph.");
+  });
 });

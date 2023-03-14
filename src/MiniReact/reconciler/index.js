@@ -1,14 +1,20 @@
 import { updateDomProperties } from "../utils";
+import { TEXT_ELEMENT } from "../element";
 
 export function render(element, container) {
-  const domElement = document.createElement(element.type);
+  const { type, props } = element;
 
-  const children = element.props.children;
-  children.forEach((child) => {
-    domElement.appendChild(document.createTextNode(child));
-  });
+  const isTextElement = type === TEXT_ELEMENT;
+  let domElement;
 
-  updateDomProperties(domElement, element.props);
+  if (isTextElement) {
+    domElement = document.createTextNode(props.nodeValue);
+  } else {
+    domElement = document.createElement(type);
+    const children = props.children;
+    children.forEach((child) => render(child, domElement));
+    updateDomProperties(domElement, props);
+  }
 
   container.appendChild(domElement);
 }
